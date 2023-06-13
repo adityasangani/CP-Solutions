@@ -1,2 +1,2 @@
 # CP-Solutions
-My solutions to various CP questions on Codeforces.
+This consists my solutions to various CP questions on Codeforces.
