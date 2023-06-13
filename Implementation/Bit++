@@ -1,0 +1,35 @@
+Problem link: https://codeforces.com/problemset/problem/282/A
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+#ifndef ONLINE_JUDGE
+	//for getting input from input.txt
+	freopen("inputx.txt", "r", stdin);
+	//for writing output to output.txt
+	freopen("outputx.txt", "w", stdout);
+#endif
+	int n;
+	cin >> n;
+	string p = "";
+	while (n--) {
+		string s;
+		cin >> s;
+		if (s[0] == '+' || s[0] == '-') {
+			p += s[0];
+		}
+		else {
+			p += s[1];
+		}
+	}
+	int x = 0;
+	for (auto it : p) {
+		if (it == '+') {
+			x = x + 1;
+		}
+		else {
+			x = x - 1;
+		}
+	}
+	cout << x;
+}
