@@ -1,0 +1,59 @@
+Problem Link: https://codeforces.com/contest/371/problem/C
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+bool check(ll brg, ll nb, ll ns, ll nc, ll pb, ll ps, ll pc, ll cb, ll cs, ll cc, ll r) {
+    ll remb = brg * cb - nb;
+    if (remb < 0) remb = 0;
+    ll rems = brg * cs - ns;
+    if (rems < 0) rems = 0;
+    ll remc = brg * cc - nc;
+    if (remc < 0) remc = 0;
+    r = r - remb * pb;
+    r = r - rems * ps;
+    r = r - remc * pc;
+    if (r >= 0) return true;
+    return false;
+}
+
+int main() {
+#ifndef ONLINE_JUDGE
+    // For getting input from input.txt
+    freopen("input1.txt", "r", stdin);
+    // For writing output to output.txt
+    freopen("output1.txt", "w", stdout);
+#endif
+    string inp;
+    getline(cin, inp);
+    ll nb, ns, nc, pb, ps, pc, r;
+    ll ans = 0;
+    cin >> nb >> ns >> nc;
+    cin >> pb >> ps >> pc;
+    cin >> r;
+    ll cb = 0, cs = 0, cc = 0;
+    for (auto it : inp) {
+        if (it == 'B') {
+            cb++;
+        } else if (it == 'S') {
+            cs++;
+        } else if (it == 'C') {
+            cc++;
+        }
+    }
+    ll low = 0, high = 1e14;
+    while (low <= high) {
+        ll mid = low + (high - low) / 2;
+        if (check(mid, nb, ns, nc, pb, ps, pc, cb, cs, cc, r) == true) {
+            ans = mid;
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    cout << ans << endl;
+
+
+    return 0;
+}
